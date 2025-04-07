@@ -1,0 +1,316 @@
+:root {
+    /* Cores */
+    --cor-fundo: #222323;
+    --cor-branco: #ffffff;
+    --cor-amarelo: #ffb710;
+    --sombra-branca: rgba(255, 255, 255, 0.5);
+    --sombra-amarela: rgba(255, 184, 0, 0.7);
+
+    /* Fontes */
+    --fonte-titulo: 'Fonte Bold', sans-serif;
+    --fonte-subtitulo: 'Fonte Medium', sans-serif;
+    --fonte-tecla: 'Fonte Bold', sans-serif;
+
+    /* Tamanhos */
+    --tam-titulo: 4rem;
+    --tam-subtitulo: 1.8rem;
+    --tam-tecla: 1.2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: var(--cor-fundo);
+    margin: 0;
+    padding: 0;
+}
+
+/* Fontes */
+@font-face {
+    font-family: 'Fonte Bold Italic';
+    src: url('../webfonts/FS Sinclair Bold Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Bold';
+    src: url('../webfonts/FS Sinclair Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Italic';
+    src: url('../webfonts/FS Sinclair Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Light Italic';
+    src: url('../webfonts/FS Sinclair Light Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Light';
+    src: url('../webfonts/FS Sinclair Light.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Medium Italic';
+    src: url('../webfonts/FS Sinclair Medium Italic.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Medium';
+    src: url('../webfonts/FS Sinclair Medium.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Fonte Regular';
+    src: url('../webfonts/FS Sinclair Regular.otf') format('opentype');
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('images/Super_Earth.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    opacity: 0;
+    z-index: 0;
+    animation: aparecerFundo 2s ease forwards;
+}
+
+/* Linhas */
+.line-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.line {
+    height: 2px;
+    background-color: var(--cor-branco);
+    margin: 0 auto;
+    box-shadow: 0 0 6px var(--sombra-branca);
+    opacity: 0;
+    width: 0;
+    animation: crescerLinha 1s ease-out forwards;
+}
+
+.line.top {
+    margin-bottom: 15rem;
+    animation-delay: 0.2s;
+}
+
+.line.bottom {
+    margin-top: 15rem;
+    animation-delay: 0.4s;
+}
+
+/* Conteúdo */
+
+.title {
+    font-family: var(--fonte-titulo);
+    letter-spacing: 3px;
+    text-shadow: 0 0 6px var(--sombra-branca);
+    font-size: var(--tam-titulo);
+    color: var(--cor-branco);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: aparecer 1s ease 1s forwards;
+}
+
+.subtitle {
+    font-family: var(--fonte-subtitulo);
+    text-shadow: 0 0 3px var(--sombra-branca);
+    font-size: var(--tam-subtitulo);
+    color: var(--cor-amarelo);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: aparecer 1s ease 1.8s forwards;
+}
+
+.start-btn {
+    background: none;
+    border: none;
+    font-family: var(--fonte-subtitulo);
+    font-size: var(--tam-tecla);
+    color: var(--cor-branco);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 0 6px var(--sombra-branca);
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    opacity: 0;
+    animation: aparecer 1s ease 2.6s forwards;
+}
+
+.start-btn .key {
+    position: relative;
+    background-color: var(--cor-branco);
+    color: var(--cor-fundo);
+    padding: 0.2rem 0.7rem;
+    font-weight: bold;
+    font-size: var(--tam-tecla);
+    font-family: var(--fonte-tecla);
+    border-radius: 4px;
+    box-shadow: inset 0 0 2px #000000aa, 0 2px 0 #555;
+}
+
+.start-btn .key::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #222;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Animações */
+@keyframes crescerLinha {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 90%;
+        opacity: 1;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes aparecerFundo {
+    to {
+        opacity: 0.10;
+    }
+}
+
+/* Tela "Get Ready" */
+.get-ready-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.get-ready-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.get-ready-title {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-branco);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 5px var(--sombra-branca);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.get-ready-round {
+    font-family: var(--fonte-subtitulo);
+    font-size: 1.8rem;
+    color: var(--cor-amarelo);
+    text-shadow: 0 0 5px var(--sombra-amarela);
+}
+
+#roundNumber {
+    color: var(--cor-amarelo);
+    text-shadow: 0 0 5px var(--sombra-amarela);
+}
+
+/* Responsividade */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .container::before {
+        background-size: 60%;
+    }
+
+    .line.top {
+        margin-bottom: 12rem;
+    }
+
+    .line.bottom {
+        margin-top: 12rem;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .container::before {
+        background-size: 70%;
+    }
+
+    .start-btn {
+        font-size: 1rem;
+    }
+
+    .start-btn .key {
+        font-size: 1rem;
+        padding: 0.15rem 0.5rem;
+    }
+
+    .line.top {
+        margin-bottom: 8rem;
+    }
+
+    .line.bottom {
+        margin-top: 8rem;
+    }
+
+    .get-ready-title {
+        font-size: 2rem;
+    }
+
+    .get-ready-round {
+        font-size: 1.4rem;
+    }
+}
